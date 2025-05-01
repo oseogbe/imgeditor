@@ -1,6 +1,6 @@
-# Laravel 12 + React 19 + Inertia.js Setup Guide
+# ImgEditor Setup Guide
 
-Follow these steps to set up your Laravel 12 project with React 19 and Inertia.js:
+Follow these steps to set up this project built with Laravel 12, React 19 and Inertia.js:
 
 ## 1. Install Dependencies
 
@@ -16,7 +16,7 @@ npm install
 Update your `.env` file with the correct database and application settings:
 
 ```env
-APP_NAME="ImageCropper"
+APP_NAME="ImgEditor"
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
