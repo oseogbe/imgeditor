@@ -11,7 +11,15 @@ composer install
 npm install
 ```
 
-## 2. Configure Environment
+## 2. Copy Environment File
+
+Copy the example environment file to create your `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+## 3. Configure Environment
 
 Update your `.env` file with the correct database and application settings:
 
@@ -25,7 +33,7 @@ DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
 
-## 3. Set Up Frontend
+## 4. Set Up Frontend
 
 Build the frontend assets:
 
@@ -33,7 +41,7 @@ Build the frontend assets:
 npm run dev
 ```
 
-## 4. Run Migrations
+## 5. Run Migrations
 
 Run database migrations to set up the database schema:
 
@@ -41,7 +49,7 @@ Run database migrations to set up the database schema:
 php artisan migrate
 ```
 
-## 5. Link Storage
+## 6. Link Storage
 
 Create a symbolic link for the storage directory:
 
@@ -49,7 +57,7 @@ Create a symbolic link for the storage directory:
 php artisan storage:link
 ```
 
-## 6. Start Development Server
+## 7. Start Development Server
 
 Start the Laravel development server:
 
@@ -57,11 +65,11 @@ Start the Laravel development server:
 php artisan serve
 ```
 
-## 7. Access the Application
+## 8. Access the Application
 
 Visit your application in the browser at `http://localhost:8000`.
 
-## 8. Additional Commands
+## 9. Additional Commands
 
 - To watch for frontend changes:
     ```bash
