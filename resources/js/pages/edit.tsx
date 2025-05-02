@@ -51,7 +51,7 @@ export default function EditPhoto({ imageId }: { imageId: string }) {
         if (!cropperRef.current) return;
 
         cropperRef.current.getCroppedCanvas().toBlob(blob => {
-            router.post(route('photos.finish', { id: imageId }), { croppedImage: blob }, {
+            router.post(route('photos.finish', { imageId }), { croppedImage: blob }, {
                 onBefore: () => setLoading(true),
                 onFinish: () => setLoading(false),
             });

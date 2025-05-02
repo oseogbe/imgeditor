@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageService
 {
+    public function getAll()
+    {
+        return Image::orderByRaw('RAND()')->get();
+    }
+
     public function get($id)
     {
         return Image::findOrFail($id);

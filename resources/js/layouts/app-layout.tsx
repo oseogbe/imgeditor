@@ -1,5 +1,5 @@
-import { Step } from "@/types";
 import { Link, usePage } from "@inertiajs/react";
+import { Step } from "@/types";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
     const { currentStep = 1, photoId = '' } = usePage<{ currentStep?: number; photoId?: string }>().props;
@@ -11,26 +11,46 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     ];
 
     return (
-        <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8">
+        <div className="flex flex-col min-h-screen bg-[#FDFDFC]">
+            {/* Header */}
+            <header className="bg-white shadow-md">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+                    {/* Logo */}
+                    <Link href="/" className="text-2xl font-bold text-indigo-600">
+                        ImgEditor
+                    </Link>
+                    {/* Navigation */}
+                    <nav>
+                        <Link
+                            href="/photos"
+                            className="text-sm font-medium text-gray-700 hover:text-indigo-600"
+                        >
+                            Upload Photo
+                        </Link>
+                    </nav>
+                </div>
+            </header>
+
+            {/* Main Content */}
             <div className="flex w-full items-center justify-center lg:grow">
                 <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
                     <div className="w-full rounded-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-lg lg:p-20">
                         <ol className="lg:flex items-center w-full space-y-4 lg:space-y-0 lg:space-x-4">
                             {steps.map((step, idx) => {
                                 const status =
-                                    step.id < currentStep ? 'complete' : step.id === currentStep ? 'current' : 'upcoming';
+                                    step.id < currentStep ? "complete" : step.id === currentStep ? "current" : "upcoming";
 
-                                let circleClasses = 'w-6 h-6 flex items-center justify-center mr-3 text-sm rounded-full ';
-                                let textClasses = 'text-base font-medium ';
-                                let iconStroke = 'stroke-gray-900';
+                                let circleClasses = "w-6 h-6 flex items-center justify-center mr-3 text-sm rounded-full ";
+                                let textClasses = "text-base font-medium ";
+                                let iconStroke = "stroke-gray-900";
 
-                                if (['current', 'complete'].includes(status)) {
-                                    circleClasses += 'bg-indigo-600 text-white border-transparent';
-                                    textClasses += 'text-indigo-600';
-                                    iconStroke = 'stroke-indigo-600';
+                                if (["current", "complete"].includes(status)) {
+                                    circleClasses += "bg-indigo-600 text-white border-transparent";
+                                    textClasses += "text-indigo-600";
+                                    iconStroke = "stroke-indigo-600";
                                 } else {
-                                    circleClasses += 'bg-gray-50 text-gray-900 border border-gray-200';
-                                    textClasses += 'text-gray-900';
+                                    circleClasses += "bg-gray-50 text-gray-900 border border-gray-200";
+                                    textClasses += "text-gray-900";
                                 }
 
                                 const isLinkDisabled = step.id > currentStep;
@@ -72,9 +92,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                             })}
                         </ol>
 
-                        <div className="mt-8 lg:mt-12">
-                            {children}
-                        </div>
+                        <div className="mt-8 lg:mt-12">{children}</div>
                     </div>
                 </main>
             </div>

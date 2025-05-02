@@ -10,6 +10,19 @@ use Inertia\Inertia;
 
 class ImageController extends Controller
 {
+    public function getImages(Request $request, ImageService $imgService)
+    {
+        // if images are not found, redirect to the upload page
+        if ($imgService->getAll()->isEmpty()) {
+            return redirect()->route('photos.create');
+        }
+
+        $images = $imgService->getAll();
+        return Inertia::render('gallery', [
+            'images' => $images,
+        ]);
+    }
+
     public function uploadPhotoView(Request $request)
     {
         return Inertia::render('photo');
@@ -76,7 +89,9 @@ class ImageController extends Controller
         $data = $request->validated();
 
         // Ensure the original image has the "_original" suffix
-        $originalImageName = pathinfo($imageId, PATHINFO_FILENAME) . '_original.' . pathinfo($imageId, PATHINFO_EXTENSION);
+        $originalImageName = strpos($imageId, '_original') === false
+            ? pathinfo($imageId, PATHINFO_FILENAME) . '_original.' . pathinfo($imageId, PATHINFO_EXTENSION)
+            : $imageId;
         $originalPath = 'original/' . $originalImageName;
 
         if (!Storage::disk('public')->exists($originalPath)) {
