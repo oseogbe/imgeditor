@@ -6,7 +6,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
     const steps: Step[] = [
         { id: 1, name: 'Upload a Photo', href: '/photos' },
-        { id: 2, name: 'Crop', href: photoId && `/photos/crop/${photoId}` },
+        { id: 2, name: 'Edit Photo', href: photoId && `/photos/edit/${photoId}` },
         { id: 3, name: 'Finish', href: photoId && `/photos/finish/${photoId}` },
     ];
 

@@ -39,10 +39,10 @@ export default function Success() {
                         />
                     </div>
                     <div className="flex-1">
-                        <h2 className="text-lg font-semibold text-center mb-4">Cropped Image</h2>
+                        <h2 className="text-lg font-semibold text-center mb-4">New Image</h2>
                         <img
                             src={image.cropped_image}
-                            alt="Cropped"
+                            alt="edited"
                             className="rounded-md shadow object-cover"
                         />
                     </div>
